@@ -13,16 +13,16 @@
 - **[피그마 링크](https://www.figma.com/file/LzHvNF0wNc6Q0JR6zGr5hU/codestates-fe-advanced-course?node-id=0%3A1)**
 
 - **게시물 리스트 및 페이지네이션**  
-  <img src='./images/main.png' width='300px'/>
+  <img src='./images/main.png' width='600px'/>
 
 - **게시물 상세페이지**  
-  <img src='./images/content.png' width='300px'/>
+  <img src='./images/content.png' width='600px'/>
 
 - **유저 상세페이지(유저가 쓴 글)**  
-  <img src='./images/about-userpost.png' width='300px'/>
+  <img src='./images/about-userpost.png' width='600px'/>
 
 - **유저 상세페이지(유저 상세정보)**  
-  <img src='./images/about-userinfo.png' width='300px'/>
+  <img src='./images/about-userinfo.png' width='600px'/>
 
 <br/>
 
@@ -41,10 +41,10 @@
 ---
 
 - **게시물 리스트**  
-  <img src='./images/postlist.gif' width='400px'/>
+  <img src='./images/postlist.gif' width='600px'/>
 
 - **게시물 상세페이지**  
-  <img src='./images/postcontent.gif' width='400px'/>
+  <img src='./images/postcontent.gif' width='600px'/>
 
 <br/>
 
@@ -53,7 +53,7 @@
 ---
 
 - **페이지네이션**  
-   <img src='./images/pagination.gif' width='400px'/>  
+   <img src='./images/pagination.gif' width='600px'/>  
   페이지네이션은 이번 목데이터가 페이지별로 데이터를 불러올 수 없었기 때문에  
   전체 데이터를 모두 가져온 다음 현재 페이지에 해당하는 10개의 자료를 잘라서 화면에 나타냈습니다
 
@@ -68,7 +68,7 @@
 <br/>
 
 - **작성자 이름에 마우스를 올리면 간단한 유저 정보 확인**  
-  <img src='./images/modal.gif' width='400px'/>  
+  <img src='./images/modal.gif' width='600px'/>  
   작성자 이름에 onMouseEnter과 onMouseLeave에 이벤트를 설정하여  
   마우스를 올리면 모달안의 유저 정보를 불러오게끔 하였습니다
 
@@ -88,7 +88,7 @@
 ```
 
 - **유저 상세페이지**  
-  <img src='./images/user.gif' width='400px'/>  
+  <img src='./images/user.gif' width='600px'/>  
   목데이터 중에서 유저의 상세정보와 유저가 쓴 글이 있어서 이 것을 활용한 새로운 페이지를 만들었습니다
 
 <br/>
