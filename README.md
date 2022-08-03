@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+## Codestates FE advanced course 과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 0. 배포링크
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+### 1. 프로토타입
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **[피그마 링크](https://www.figma.com/file/LzHvNF0wNc6Q0JR6zGr5hU/codestates-fe-advanced-course?node-id=0%3A1)**
 
-### `npm test`
+- **게시물 리스트 및 페이지네이션**  
+  <img src='./images/main.png' width='300px'/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **게시물 상세페이지**  
+  <img src='./images/content.png' width='300px'/>
 
-### `npm run build`
+- **유저 상세페이지(유저가 쓴 글)**  
+  <img src='./images/about-userpost.png' width='300px'/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **유저 상세페이지(유저 상세정보)**  
+  <img src='./images/about-userinfo.png' width='300px'/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. 사용한 스택
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React
+- Emotion
+- axios
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3.1 필수로 구현한 기능
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+- **게시물 리스트**  
+  <img src='./images/postlist.gif' width='400px'/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **게시물 상세페이지**  
+  <img src='./images/postcontent.gif' width='400px'/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>
 
-### Code Splitting
+### 3.2 추가로 구현한 기능(설명포함)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+- **페이지네이션**  
+   <img src='./images/pagination.gif' width='400px'/>  
+  페이지네이션은 이번 목데이터가 페이지별로 데이터를 불러올 수 없었기 때문에  
+  전체 데이터를 모두 가져온 다음 현재 페이지에 해당하는 10개의 자료를 잘라서 화면에 나타냈습니다
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+{
+  postList
+    .slice(10 * (page - 1), 10 * page)
+    .map((postInfo) => <Post key={postInfo.id} postInfo={postInfo} />);
+}
+```
 
-### Making a Progressive Web App
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **작성자 이름에 마우스를 올리면 간단한 유저 정보 확인**  
+  <img src='./images/modal.gif' width='400px'/>  
+  작성자 이름에 onMouseEnter과 onMouseLeave에 이벤트를 설정하여  
+  마우스를 올리면 모달안의 유저 정보를 불러오게끔 하였습니다
 
-### Advanced Configuration
+```html
+<div
+  className="modal"
+  css={visible ? modalOnStyle : modalOffStyle}
+  onMouseEnter={() => {
+    toggleVisible(true);
+  }}
+  onMouseLeave={() => {
+    toggleVisible(false);
+  }}
+>
+  ...
+</div>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **유저 상세페이지**  
+  <img src='./images/user.gif' width='400px'/>  
+  목데이터 중에서 유저의 상세정보와 유저가 쓴 글이 있어서 이 것을 활용한 새로운 페이지를 만들었습니다
 
-### Deployment
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 4. 과제를 하면서 어려웠던 점
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+과제를 하면서 가장 어려웠던 점은 useEffect디버깅이었습니다. 모달 제작시 무한히 서버에 요청하는 버그가 일어나 웹페이지가 멈추는 현상이 있었는데 useEffect에 의존성 배열을 정확히 작성하여 문제를 해결하였습니다.
+
+그리고 이번 프로젝트에서는 useEffect안에서 Data fetching이 되기 때문에 실행되기 전의 화면을 로딩화면으로 채우기 위해 로딩 컴포넌트를 일일히 모든 페이지에 배치했습니다. 이러한 방법은 비효율적인 것 같아 Data fetching 커스텀 훅을 제작하였지만 커스텀 훅에 api를 전달하는 과정에서 문제가 있었습니다. 이번 프로젝트에서 api들을 모두 추상화하기 위해 호출하는 방법을 모두 함수로 바꾸었습니다. 커스텀 훅의 인수에 함수를 전달하자 커스텀 훅 자체가 에러가 생겼습니다. 함수 자체는 컴포넌트 업데이트시 계속 새로운 함수로 인식되어 useEffect의 의존성배열에 넣어도 무한히 호출되는 에러가 발생했습니다. 그래서 커스텀 훅 방식은 포기했습니다. 다음 React 프로젝트에서는 api들을 추상화하지 않거나 Data fetching library(Query,SWR)을 사용해볼 예정입니다.
